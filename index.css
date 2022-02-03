@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&display=swap');
+:root{
+    --background-color: white;
+    --font-size-big:25px;
+    --font-size-small:15px;
+    --text-color:white;
+    --color1:white;
+    --text-color1:red;
+    --quotes-font:'Delius Swash Caps', cursive;
+    --weather-font:'Comfortaa', cursive;
+
+}
+body,html{
+    padding:0;
+    margin:0;
+}
+.main{
+    height:100vh;
+    background:url('./Assets/Wallpapers/one.webp');
+    background-repeat: none;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color:var(--text-color)
+}
+.welcome-content{
+    font-size: 24px;
+
+}
+.top-bar{
+    margin: 0px 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top:3%
+}
+.time{
+    font-size: 30px;
+    color: var(--text-color);
+}
+.date{
+    font-size: 18px;
+    color: var(--text-color);
+}
+.extensions-list{
+    color:var(--text-color)
+}
+.search-box{
+    text-align: center;
+  height:50px;
+  width:600px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: row;
+
+  background-color: var(--color1);
+}
+.search-box .search-button{
+    color:var(--text-color1);
+    width:20px;
+    height:20px;
+    
+}
+#engine-selector{
+    margin-top: 10px;
+}
+#search-button{
+    margin-top: 10px;
+}
+input, select{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+  }
+
+.engine-logo{
+    height:30px;
+    width:30px;
+    margin-right:10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.search-box input{
+    width: 100%;
+    height: 100%;
+  border-radius: 5px;
+  outline: none;
+  border:none;
+  font-weight: 500;
+  font-size: 16px;
+  background-color: white;
+}
+.search-input{
+    height:100%;
+    width: 85%;
+}
+.site-selector{
+    height:0px;
+    overflow-y: hidden;
+    animation: 20s;
+    
+}
+.show{
+    height:fit-content;
+    animation: 20s;
+    margin-top: 10px;
+    background-color: rgba(61, 59, 59, 0.2);
+    border-radius: 0 0 20px 20px;
+    padding-bottom: 10px;
+
+}
+.show div{
+    margin-top:5px
+}
+
+.search-center{
+    display:flex;
+    margin-top: 5%;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+}
+.search-icon{
+    cursor: pointer;
+}
+.search-recommendations{
+    background-color: rgba(61, 59, 59, 0.2);
+    text-align: left;
+    color:var(--text-color);
+    margin-top: 2px;
+    padding: 0px 0px;
+    border-radius: 0 0 20px 20px;
+    height: 0%;
+    overflow-y: hidden;
+}
+
+.search-recommendations::-webkit-scrollbar {
+    display: none;
+}
+.search-recommendations-show{
+    max-height: 200px;
+    height: fit-content;
+    overflow-y: scroll;
+    padding: 10px 0px;
+    scroll-behavior: smooth;
+    z-index: 1000;
+}
+.search-container{
+    margin-top: 900px;
+}
+.search-recommended-text{
+    font-size: 16px;
+    margin:0px 10px;
+    padding:3px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    color:var(--text-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.search-recommended-text >.one{
+    display: flex;
+    flex-direction: row;
+
+}
+.search-value-recommendation:hover{
+    text-decoration: underline;
+}
+.search-recommendations-logo{
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+}
+.upward-arrow{
+    width:16px;
+    height: 16px;
+}
+.clear-logo{
+    width:18px;
+    height:18px;
+    margin: 0px 10px;
+}
+.music-player-container{
+    position: fixed;
+    bottom: 10px;
+    left:-30px
+}
+.quote-container{
+    margin:10px auto;
+    max-width: 700px;
+    margin-top: -2%;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    background-color:rgba(61, 59, 59, 0.2);
+    padding: 10px 0px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.quote-container:hover{
+
+
+}
+#random-quote{
+    font-size: 20px;
+    color: rgb(255, 255, 255,1);
+    font-family: var(--quotes-font);
+    width: 700px;
+    position: relative;
+}
+#author{
+    font-size: 14px;
+    color: rgb(255, 255, 255,1);
+    font-family: var(--quotes-font);
+    position: absolute;
+    bottom: -40px;
+    right: 5px;
+    font-weight: 600;
+}

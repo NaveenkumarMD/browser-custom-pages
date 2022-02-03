@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Tab</title>
+    <link rel="icon" href="/Assets/icons/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./musicplayer.css">
+    <link rel="stylesheet" href="./weather.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="main">
+        <div class="stackoverflow-container" id="stackoverflow-container">
+            <div class="stack-card" id="stack-card">
+                <div id="reputations">
+
+                </div>
+                <div id='reputations-text'>reputations</div>
+            </div>
+            <div id="badges">
+                <div class="badges-count">
+                    <div><span id="gold"></span></div>
+                    <div><i class="fas fa-circle" style="color: gold;"></i></div>
+                </div>
+                <div>
+                    <div><span id="silver"></span></div>
+                    <div> <i class="fas fa-circle" style="color: silver;"></i></div>
+                </div>
+
+                <div>
+                    <div><span id="bronze"></span></div>
+
+                    <div><i class="fas fa-circle" style="color: 	#CD7F32;"></i></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="news-container">
+            <p><img class="gitstreak" align="center"
+                    src="https://github-readme-streak-stats.herokuapp.com/?user=naveenkumarmd&theme=gruvbox_duo&date_format=M%20j%5B%2C%20Y%5D&background=312E2E80&ring=10C5FF&sideNums=DDDDDD&currStreakLabel=10C5FF&border=DDDDDD00&dates=DDDDDD&fire=0BAADD&sideLabels=DDDDDD&currStreakNum=16A6DD&stroke=C0C0C0"
+                    alt="naveenkumarmd" /></p>
+        </div>
+        <div class="weather-container">
+            <div class="flex space-between align-center">
+                <div class="today-text">
+                    Today
+                </div>
+                <div class="weather-date" id="weather-date">
+
+                </div>
+            </div>
+            <div class="flex space-around align-center temp-container">
+                <div>
+                    <span class="temperature">30</span>
+                    <span class="metric">&deg; C</span>
+                </div>
+
+                <div>
+                    <img src="Assets/icons/Weather/partly-cloudy.png" alt="weather">
+                </div>
+            </div>
+            <div class="location-text">
+                <i class="fas fa-map-marker-alt" style="color: white;"></i> Mangapatti,636809
+            </div>
+        </div>
+        <div class="music-player-container">
+            <div class="music-container" id="music-container">
+                <div class="music-info">
+                    <h4 id="title"></h4>
+                    <div class="progress-container" id="progress-container">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                </div>
+
+                <audio src="Assets/music-player_music_ukulele.mp3" id="audio"></audio>
+
+                <div class="img-container">
+                    <img src="Assets/ukulele.jpg" alt="music-cover" id="cover" />
+                </div>
+                <div class="navigation">
+                    <button class="action-btn" id="select-songs-button">
+                        <i class="fas fa-folder"></i>
+                    </button>
+                    <input type="file" multiple id="songs-input" style="display: hidden;width: 0px;height: 0px;" />
+                    <button id="prev" class="action-btn">
+                        <i class="fas fa-backward"></i>
+                    </button>
+                    <button id="play" class="action-btn action-btn-big">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button id="next" class="action-btn">
+                        <i class="fas fa-forward"></i>
+                    </button>
+                    <button class="action-btn">
+                        <i class="fas fa-random"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="top-bar">
+            <div class="welcome-content">
+                <div>
+                    Welcome Naveenkumar!
+                </div>
+
+                <div>
+                    Good Morning
+                </div>
+            </div>
+
+            <div class="timeanddate">
+                <div class="date" id="time"></div>
+                <div class="time" id="date"></div>
+            </div>
+        </div>
+        <div class="quote-container">
+            <div id="random-quote">
+
+            </div>
+            <div id="author"></div>
+
+        </div>
+        <div class="search-center">
+            <div class="search-box">
+                <span class="selector-button">
+                    <div id="engine-selector">
+                        <img id="selectedEngine" src="./Assets/icons/google.svg" class="engine-logo" />
+                    </div>
+                    <div class="site-selector" id="engine-selector-list">
+                        <div id="googleclick">
+                            <img src="./Assets/icons/google.svg" class="engine-logo" />
+                        </div>
+                        <div id="duckclick">
+                            <img src="./Assets/icons/duckduckgo.svg" class="engine-logo" />
+                        </div>
+                        <div id="bingclick">
+                            <img src="./Assets/icons/bing.svg" class="engine-logo" />
+                        </div>
+                        <div id="youtubeclick">
+                            <img src="./Assets/icons/youtube.svg" class="engine-logo" />
+                        </div>
+                        <div id="instaclick">
+                            <img src="./Assets/icons/instagram.svg" class="engine-logo" />
+                        </div>
+                    </div>
+                </span>
+
+                <div class="search-input">
+                    <input type="text" placeholder="Search..." id="search-input">
+                    <div class="search-recommendations" id="search-recommendations">
+                    </div>
+                </div>
+
+
+                <img src="./Assets/icons/search.svg" class="search-icon" id="search-button" width="25px" height="25px">
+            </div>
+        </div>
+        <div id="extensions-list" style="display: none;">
+
+        </div>
+    </div>
+</body>
+<script src="./index.js" defer></script>
+<script src="./musicplayer.js" defer></script>
+<script src="./weather.js" defer></script>
+
+</html>
