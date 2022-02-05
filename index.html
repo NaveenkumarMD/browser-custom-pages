@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <div class="main">
+    <div class="main" id="main">
         <div class="stackoverflow-container" id="stackoverflow-container">
             <div class="stack-card" id="stack-card">
                 <div id="reputations">
@@ -72,37 +72,27 @@
         </div>
         <div class="music-player-container">
             <div class="music-container" id="music-container">
-                <div class="music-info">
-                    <h4 id="title"></h4>
-                    <div class="progress-container" id="progress-container">
-                        <div class="progress" id="progress"></div>
-                    </div>
-                </div>
-
-                <audio src="Assets/music-player_music_ukulele.mp3" id="audio"></audio>
-
-                <div class="img-container">
-                    <img src="Assets/ukulele.jpg" alt="music-cover" id="cover" />
-                </div>
                 <div class="navigation">
                     <button class="action-btn" id="select-songs-button">
                         <i class="fas fa-folder"></i>
                     </button>
                     <input type="file" multiple id="songs-input" style="display: hidden;width: 0px;height: 0px;" />
-                    <button id="prev" class="action-btn">
-                        <i class="fas fa-backward"></i>
-                    </button>
-                    <button id="play" class="action-btn action-btn-big">
-                        <i class="fas fa-play"></i>
-                    </button>
-                    <button id="next" class="action-btn">
-                        <i class="fas fa-forward"></i>
-                    </button>
-                    <button class="action-btn">
+                    <button class="action-btn" id="shuffle">
                         <i class="fas fa-random"></i>
                     </button>
                 </div>
             </div>
+        </div>
+        <div class="worked-container">
+            <div class="work-hours">
+                <div class="total-hours">
+                    <span id="hours_so_far">2</span><span>hrs</span>
+                </div>
+                <div class="icon" id="increase-time">
+                    <i class="fas fa-bomb"></i>
+                </div>
+            </div>
+
         </div>
         <div class="top-bar">
             <div class="welcome-content">
@@ -157,9 +147,64 @@
                     <div class="search-recommendations" id="search-recommendations">
                     </div>
                 </div>
+                <div class="favourites-container">
+                    <div class="favourite">
 
+                    </div>
+                </div>
 
-                <img src="./Assets/icons/search.svg" class="search-icon" id="search-button" width="25px" height="25px">
+                <img src="./Assets/icons/search.svg" class="search-icon" id="search-button" width="25px" height="25px"
+                    style="margin-right: 10px;">
+            </div>
+        </div>
+        <div class="favourites-container" id="favourites">
+            <div class="favourites">
+                <div class="icon">
+                    <i class="fab fa-cotton-bureau"></i>
+                </div>
+                <div class="name">
+                    Instagram
+                </div>
+            </div>
+            <div class="favourites">
+                <div class="icon">
+                    <i class="fab fa-cotton-bureau"></i>
+                </div>
+                <div class="name">
+                    Instagram
+                </div>
+            </div>
+            <div class="favourites">
+                <div class="icon">
+                    <i class="fab fa-cotton-bureau"></i>
+                </div>
+                <div class="name">
+                    Instagram
+                </div>
+            </div>
+            <div class="favourites">
+                <div class="icon">
+                    <i class="fab fa-cotton-bureau"></i>
+                </div>
+                <div class="name">
+                    Instagram
+                </div>
+            </div>
+            <div class="favourites">
+                <div class="icon">
+                    <i class="fab fa-cotton-bureau"></i>
+                </div>
+                <div class="name">
+                    Instagram
+                </div>
+            </div>
+            <div class="favourites">
+                <div class="icon">
+                    <i class="fab fa-cotton-bureau"></i>
+                </div>
+                <div class="name">
+                    Instagram
+                </div>
             </div>
         </div>
         <div id="extensions-list" style="display: none;">
@@ -168,7 +213,7 @@
     </div>
 </body>
 <script src="./index.js" defer></script>
-<script src="./musicplayer.js" defer></script>
+<script src="./wallpaper.js" defer></script>
 <script src="./weather.js" defer></script>
 
 </html>

@@ -1,21 +1,28 @@
-//Main variables
+//----------------------------------------------------------------------------
+// Main variables
+//----------------------------------------------------------------------------
 
 var SearchEngine = "google"
-
-
-
 const input_field = document.getElementById("search-input");
 const search_button = document.getElementById("search-button");
 const extensions_list_node = document.getElementById("extensions-list");
-input_field.focus()
+//----------------------------------------------------------------------------
+//Foucs on search field on page load
+//----------------------------------------------------------------------------
+// input_field.focus()
 
+
+
+//----------------------------------------------------------------------------
+//Button shortcuts
+//----------------------------------------------------------------------------
 input_field.addEventListener("keyup", function (event) {
     if (event.keyCode === 13) {
         event.preventDefault();
         search_button.click();
     }
 })
-document.body.focus()
+
 document.body.addEventListener("keyup", function (event) {
 
     if (event.altKey && event.keyCode == 71) {
@@ -39,6 +46,10 @@ document.body.addEventListener("keyup", function (event) {
         window.location.href = ("https://www.leetcode.com/")
     }
 })
+
+//----------------------------------------------------------------------------
+// Get a random string 
+//----------------------------------------------------------------------------
 function randomString(length) {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -48,6 +59,11 @@ function randomString(length) {
 
     return text;
 }
+
+//----------------------------------------------------------------------------
+//Search button click handler which stores the data in local storage on successfull search
+//Sorting of recommendations are based on frequency of search
+//----------------------------------------------------------------------------
 search_button.addEventListener("click", function () {
     const search_value = input_field.value;
     if (search_value.length === 0 || search_value === null || search_value === undefined) {
@@ -76,6 +92,30 @@ search_button.addEventListener("click", function () {
     }
     localStorage.setItem("search_data_list", JSON.stringify(search_data_list))
 
+    //----------------------------------------------------------------------------
+    //Direct shortcuts 
+    //----------------------------------------------------------------------------
+    if (search_value.toLowerCase() === "github") {
+        input_field.value = "";
+        return window.location.href = "https://github.com"
+    }
+    if (search_value.toLowerCase() === "stackoverflow" || search_value.toLowerCase() === "stack") {
+        input_field.value = "";
+        return window.location.href = "https://stackoverflow.com"
+    }
+    if (search_value.toLowerCase() === "hackerrank") {
+        input_field.value = "";
+        return window.location.href = "https://www.hackerrank.com"
+    }
+    if (search_value.toLowerCase() === "youtube") {
+        input_field.value = "";
+        return window.location.href = "https://www.youtube.com"
+    }
+    if (search_value.toLowerCase() === "leetcode" || search_value.toLowerCase() === "leet") {
+        input_field.value = "";
+        return window.location.href = "https://leetcode.com"
+    }
+
     window.location.href = "https://www.google.com/search?q=" + search_value;
     switch (SearchEngine) {
         case "google":
@@ -100,10 +140,9 @@ search_button.addEventListener("click", function () {
     input_field.value = "";
 })
 
-
-//time
-
-// date.innerHTML=month+" "+date
+//----------------------------------------------------------------------------
+//Clock functions
+//----------------------------------------------------------------------------
 
 setInterval(function () {
     var today = new Date();
@@ -151,6 +190,10 @@ selectorbuttonnode.addEventListener("click", function () {
     enginelist.classList.toggle("show")
 
 })
+
+//----------------------------------------------------------------------------
+//Engine selector click handler
+//----------------------------------------------------------------------------
 var InstaEngineNode = document.getElementById("instaclick")
 var YoutubeEngineNode = document.getElementById("youtubeclick")
 var bingEngineNode = document.getElementById("bingclick")
@@ -185,11 +228,13 @@ duckEngineNode.addEventListener("click", function () {
     SearchEngine = "duckduckgo"
 })
 
+
+
 var search_recommendations = document.getElementById('search-recommendations')
 var search_data_list = JSON.parse(localStorage.getItem("search_data_list")) || []
-
-console.log(search_data_list)
-//sort by frequency
+//----------------------------------------------------------------------------
+//Search Recommendations sort by frequency
+//----------------------------------------------------------------------------
 search_data_list.sort(function (a, b) {
     return b.frequency - a.frequency
 })
@@ -209,7 +254,9 @@ input_field.addEventListener("keyup", function (event) {
     })
     setRecommendations(arr)
 })
+const favourites_element=document.getElementById('favourites')
 function setRecommendations(arr) {
+    favourites_element.innerHTML=""
     search_recommendations_content = ""
     search_recommendations.innerHTML = ""
     arr.forEach(search_data => {
@@ -261,13 +308,17 @@ function setRecommendations(arr) {
 
 
 input_field.addEventListener('focusin', () => {
-
     search_recommendations.classList.add("search-recommendations-show")
 })
 
+//----------------------------------------------------------------------------
+//Get a random quote and display it
+//----------------------------------------------------------------------------
 var randomQuote;
 const QuoteapiUrl = "https://type.fit/api/quotes";
-
+//----------------------------------------------------------------------------
+//Quotes are stored in an array in localstorage and directly accessed from there to reduce the data usage.
+//----------------------------------------------------------------------------
 const Quotes_from_local = JSON.parse(localStorage.getItem("quotes_from_local")) ? QuotesfromLocal() : Quotesres()
 
 function Quotesres() {
