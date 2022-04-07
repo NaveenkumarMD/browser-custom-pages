@@ -242,21 +242,21 @@ let search_recommendations_content = ""
 input_field.addEventListener("keyup", function (event) {
     let input_value = input_field.value
     let arr = []
-    let arr1=new Set()
+    let arr1 = new Set()
     search_data_list.length > 0 && search_data_list.forEach(search_data => {
         if (search_data.search_value.toLowerCase().indexOf(input_value) > -1) {
-            if(!arr1.has(search_data.search_value)){
+            if (!arr1.has(search_data.search_value)) {
                 arr.push(search_data)
                 arr1.add(search_data.search_value)
             }
-        
+
         }
     })
     setRecommendations(arr)
 })
-const favourites_element=document.getElementById('favourites')
+const favourites_element = document.getElementById('favourites')
 function setRecommendations(arr) {
-    favourites_element.innerHTML=""
+    favourites_element.innerHTML = ""
     search_recommendations_content = ""
     search_recommendations.innerHTML = ""
     arr.forEach(search_data => {
@@ -339,3 +339,42 @@ function QuotesfromLocal() {
     var author_node = document.getElementById('author')
     author_node.innerHTML = "- " + randomQuote.author || ""
 }
+
+//----------------------------------------------------------------
+//Personal Data
+//----------------------------------------------------------------
+const daytimenode = document.getElementById("daytime")
+let daytimeword;
+if (new Date().getHours() >= 6 && new Date().getHours() <= 12) {
+    daytimeword = "Morning"
+}
+else if (new Date().getHours() >= 13 && new Date().getHours() <= 17) {
+    daytimeword = "Afternoon"
+}
+else if (new Date().getHours() >= 18 && new Date().getHours() <= 23) {
+    daytimeword = "Evening"
+}
+else {
+    daytimeword = "Night"
+}
+daytimenode.innerText = daytimeword
+
+var Personal_data={}
+fetch("./data.json")
+    .then(res => res.json())
+    .then(res => {
+        console.log(res)
+        Personal_data=res
+        setData(res)
+    })
+    .catch(err=>{
+        console.log(err)
+        console.log("Couldn't fetch data from JSON file")
+    })
+const usernamenode=document.getElementById("username")
+
+function setData(res){
+    usernamenode.innerText=res.name || ""
+}
+
+
