@@ -359,22 +359,269 @@ else {
 }
 daytimenode.innerText = daytimeword
 
-var Personal_data={}
+var Personal_data = {}
 fetch("./data.json")
     .then(res => res.json())
     .then(res => {
         console.log(res)
-        Personal_data=res
+        Personal_data = res
         setData(res)
     })
-    .catch(err=>{
+    .catch(err => {
         console.log(err)
         console.log("Couldn't fetch data from JSON file")
     })
-const usernamenode=document.getElementById("username")
+const usernamenode = document.getElementById("username")
 
-function setData(res){
-    usernamenode.innerText=res.name || ""
+function setData(res) {
+    usernamenode.innerText = res.name || ""
+}
+
+const medium_token = "26ae36f810d7a3c53c8886d503ad2a41c6bad3fb4eb419dab8ab247b3de06cf12"
+
+const getMediumData = async () => {
+    const res = await fetch(`https://api.medium.com/v1/me/publications?access_token=${medium_token}`)
+    const medium_data = await res.json()
+    console.log(medium_data)
+}
+
+//-------------------------------------------------------------------------------------------------
+//Streak image
+//-------------------------------------------------------------------------------------------------
+const get_streak_image = async () => {
+    fetch("https://powerful-badlands-76449.herokuapp.com/https://github-readme-streak-stats.herokuapp.com/?user=naveenkumarmd&theme=gruvbox_duo&date_format=M%20j%5B%2C%20Y%5D&background=312E2E80&ring=10C5FF&sideNums=DDDDDD&currStreakLabel=10C5FF&border=DDDDDD00&dates=DDDDDD&fire=0BAADD&sideLabels=DDDDDD&currStreakNum=16A6DD&stroke=C0C0C0")
+        .then(res => res.blob()).then(blob => {
+            console.log(blob)
+            console.log("blob is ", URL.createObjectURL(blob))
+            localStorage.setItem("streak_image", JSON.stringify({
+                url: URL.createObjectURL(blob)
+            }))
+            set_streak_image(URL.createObjectURL(blob))
+
+        })
+}
+get_streak_image()
+const set_streak_image = (url) => {
+    console.log("Url is ", url)
+    const image = document.createElement("img")
+    image.classList.add("gitstreak")
+    image.src = url
+    document.getElementById("streak-image").appendChild(image)
+}
+const get_streak_image_from_local = () => {
+    let blob = JSON.parse(localStorage.getItem("streak_image"))
+    console.log("from local storahe")
+    console.log(blob, "from local")
+
 }
 
 
+
+function getPreviousDay(date = new Date()) {
+    const previous = new Date(date.getTime())
+    previous.setDate(date.getDate() - 1)
+
+    return previous.toString()
+}
+//get current day
+const daycomplete = async () => {
+    try {
+        var day_cache = localStorage.getItem("day_cache")
+    }
+    catch (err) {
+        var day_cache = "Sun"
+    }
+    var today_date = new Date()
+    var today_date_string = today_date.toDateString()
+    var today_date_string_array = today_date_string.split(" ")
+    var day = today_date_string_array[0]
+
+    if (day !== day_cache) {
+        localStorage.setItem("day_cache", day)
+        const repotasks = await JSON.parse(localStorage.getItem("repotasks"))
+
+        let yestredaytasks = await JSON.parse(localStorage.getItem("tasks"))
+        let maxsofar = yestredaytasks.total
+        console.log("Amxso fat us ", maxsofar)
+        if (repotasks) {
+            let maxsofarrr = repotasks.max
+            let previousday = getPreviousDay()
+            localStorage.setItem("repotasks", JSON.stringify({
+                max: maxsofar > maxsofarrr ? maxsofar : maxsofarrr,
+                tasks: [
+                    ...repotasks.tasks,
+                    {
+                        [previousday]: yestredaytasks
+                    }
+                ]
+            }))
+        }
+        else {
+            let previousday = getPreviousDay()
+            localStorage.setItem("repotasks", JSON.stringify({
+                max: maxsofar,
+                tasks: [
+                    {
+                        [previousday]: yestredaytasks
+                    }
+                ]
+            }))
+        }
+
+    }
+    else {
+
+    }
+}
+daycomplete()
+
+//-------------------------------------------------------------------------------------------------
+//Tasks
+//-------------------------------------------------------------------------------------------------
+const tasks = JSON.parse(localStorage.getItem("tasks"))
+
+// Add new event button handler
+const addnewtaskbtn = document.getElementById("add-event")
+var task_name
+var task_reward
+addnewtaskbtn.addEventListener("click", async () => {
+    task_name = prompt("Enter the task name")
+    task_reward = prompt("Enter the task reward")
+    task_reward = Number.parseInt(task_reward)
+    if (!Number.isInteger(task_reward)) {
+        return alert("reward should be a number .")
+    }
+    if (1 > task_reward > 10) {
+        return alert("Reward should be between the range of 1 to 100")
+    }
+    const tasks = await JSON.parse(localStorage.getItem("tasks"))
+    console.log("going to ass")
+    if (tasks) {
+        console.log("found")
+        let xtotal = tasks.total
+        localStorage.setItem("tasks", JSON.stringify({
+            total: xtotal + task_reward,
+            task: [
+                ...tasks.task,
+                {
+                    name: task_name,
+                    reward: task_reward
+                }
+            ]
+        }))
+    }
+    else {
+        localStorage.setItem("tasks", JSON.stringify({
+            total: task_reward,
+            task: [
+                {
+                    name: task_name,
+                    reward: task_reward
+                }
+            ]
+        }))
+    }
+    gettodaytasks()
+    console.log("tasks............", tasks)
+
+})
+const task_container_node = document.getElementById("task-container")
+function addtasktoNode(task_name, task_reward) {
+    const taskcard = document.createElement("div")
+    taskcard.className = "card"
+    const namecard = document.createElement("div")
+    namecard.className = "name"
+    taskcard.appendChild(namecard)
+    const namenode = document.createElement("div")
+    namenode.className = "namew"
+    namenode.innerHTML = task_name
+    const rewardnode = document.createElement("div")
+    rewardnode.className = "reward"
+    rewardnode.innerHTML = `
+        <div class="gold-card">
+            <div class="gold-card-img-container">
+                <img src="./Assets/icons/gold.png"/>
+            </div>
+            <div class="gold-reward">${task_reward}</div>
+        </div>
+    `
+    namecard.appendChild(namenode)
+    namecard.appendChild(rewardnode)
+    const donenode = document.createElement("div")
+    const doneimg = document.createElement("img")
+    doneimg.src = "./Assets/icons/tick.svg"
+    doneimg.className = "note-img"
+    donenode.appendChild(doneimg)
+    taskcard.appendChild(donenode)
+    donenode.addEventListener("click", () => {
+        markasdone(task_name, task_reward)
+    })
+    const cancelnode = document.createElement("div")
+    const cancelimg = document.createElement("img")
+    cancelimg.src = "./Assets/icons/cross.svg"
+    cancelimg.className = "note-img"
+    cancelimg.classList.add("cancel-img")
+    cancelnode.appendChild(cancelimg)
+    cancelnode.addEventListener("click", () => {
+        markasdone(task_name, task_reward)
+    })
+    taskcard.appendChild(cancelnode)
+    task_container_node.appendChild(taskcard)
+
+}
+const gettodaytasks = async () => {
+    const tasks = await JSON.parse(localStorage.getItem("tasks"))
+    task_container_node.innerHTML = " "
+    if (tasks) {
+        tasks.task.forEach(task => {
+            addtasktoNode(task.name, task.reward)
+        })
+    }
+    else {
+        task_container_node.innerHTML = "<div>None</div>"
+    }
+}
+gettodaytasks()
+
+//-------------------------------------------------------------------------
+// functions to add task and remove task
+//-------------------------------------------------------------------------
+
+function markasdone(task_name, task_reward) {
+    if (!tasks || !tasks.task || !Array.isArray(tasks.task)) {
+        return
+    }
+    var currtasks = tasks.task.filter(task => task.name == task_name && task.reward == task_reward)
+    localStorage.setItem("tasks", JSON.stringify({
+        total:tasks.total,
+        task: currtasks
+    }))
+    gettodaytasks()
+}
+
+
+
+///----------------------------------------------------------
+// Quick links
+//----------------------------------------------------------
+document.getElementById("medium").addEventListener("click", () => {
+    window.open("https://medium.com", target = "_blank")
+})
+document.getElementById("instagram").addEventListener("click", () => {
+    window.open("https://instagram.com", target = "_blank")
+})
+document.getElementById("portfolio").addEventListener("click", () => {
+    window.open("https://mdnaveenkumar2002.web.app", target = "_blank")
+})
+document.getElementById("linkedin").addEventListener("click", () => {
+    window.open("https://linkedin.com", target = "_blank")
+})
+document.getElementById("github").addEventListener("click", () => {
+    window.open("https://github.com", target = "_blank")
+})
+document.getElementById("spotify").addEventListener("click", () => {
+    window.open("https://open.spotify.com/search", target = "_blank")
+})
+document.getElementById("gmail").addEventListener("click", () => {
+    window.open("https://github.com", target = "_blank")
+})

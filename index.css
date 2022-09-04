@@ -121,7 +121,7 @@ input, select{
     flex-direction:row;
     justify-content:center;
     align-items:center;
-    gap: 25px;
+    gap: 40px;
     max-width: 600px;
     margin: 5% auto;
 }
@@ -140,10 +140,14 @@ input, select{
     align-items: center;
     font-size: 20px;
     color: var(--text-color);
-    background-color: rgba(61, 59, 59, 0.4);
+    background-color: white;
     padding: 10px;
     border-radius: 50%;
     font-weight: 900;
+}
+.favourites>.icon>img{
+    width: 100%;
+    height: 100%;
 }
 .favourites>.name{
     font-size: 14px;
@@ -248,18 +252,18 @@ input, select{
 }
 .worked-container{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction:column;
+
     align-items: center;
     margin-top: 10px;
     position: absolute;
-    height: 70px;
-    width:70px;
-    top:40%;
+    height: 340px;
+    width:300px;
+    top:20%;
     right:30px;
-    padding: 20px;
+    padding:10px  15px;
     border-radius: 10px;
-    background-color: rgba(61, 59, 59, 0.4);
+    background-color: rgba(61, 59, 59, 0.3);
 }
 .work-hours{
     display:flex;
@@ -279,4 +283,82 @@ input, select{
     color:var(--text-color);
     font-weight: 500;
     cursor: pointer;
+}
+.card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 96%;
+    background-color: rgba(67, 64, 64, 0.4);
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-bottom:10px ;
+}
+.name{
+    width: 80%;
+}
+.namew{
+    font-size: 18px;
+    font-weight: 500;
+    font-family:'Delius Swash Caps';
+}
+.note-img{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    
+}
+.cancel-img{
+    width: 17px;
+    height: 17px;
+    border-radius: 6px;
+}
+.title-card{
+    font-size: 22px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-family: var(--weather-font);
+}
+#add-work-image{
+    width:15px;
+    height:15px;
+}
+.abs-bottom{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color:rgb(141, 149, 152);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.card-container{
+    overflow: scroll;
+    width: 100%;
+}
+.card-container::-webkit-scrollbar{
+    display: none;
+}
+.gold-card{
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    gap: 5px;
+} 
+.gold-card-img-container{
+    width: 16px;
+    height: 16px;
+}
+.gold-card-img-container>img{
+    width: 100%;
+    height: 100%;
 }

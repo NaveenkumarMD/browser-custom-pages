@@ -43,9 +43,10 @@
             </div>
         </div>
         <div class="news-container">
-            <p><img class="gitstreak" align="center"
+            <p id="streak-image"></p>
+            <!-- <p><img class="gitstreak" align="center"
                     src="https://github-readme-streak-stats.herokuapp.com/?user=naveenkumarmd&theme=gruvbox_duo&date_format=M%20j%5B%2C%20Y%5D&background=312E2E80&ring=10C5FF&sideNums=DDDDDD&currStreakLabel=10C5FF&border=DDDDDD00&dates=DDDDDD&fire=0BAADD&sideLabels=DDDDDD&currStreakNum=16A6DD&stroke=C0C0C0"
-                    alt="naveenkumarmd" /></p>
+                    alt="naveenkumarmd" /></p> -->
         </div>
         <div class="weather-container">
             <div class="flex space-between align-center">
@@ -73,7 +74,7 @@
         <div class="music-player-container">
             <div class="music-container" id="music-container">
                 <div class="navigation">
-                    <button class="action-btn" id="select-songs-button">
+                    <button class="action-btn" id="select-wallpaper">
                         <i class="fas fa-folder"></i>
                     </button>
                     <input type="file" multiple id="songs-input" style="display: hidden;width: 0px;height: 0px;" />
@@ -84,14 +85,14 @@
             </div>
         </div>
         <div class="worked-container">
-            <div class="work-hours">
-                <div class="total-hours">
-                    <span id="hours_so_far">2</span><span>hrs</span>
-                </div>
-                <div class="icon" id="increase-time">
-                    <i class="fas fa-bomb"></i>
-                </div>
+            <div class="abs-bottom" id="add-event">
+                <img src="./Assets/icons/add.svg" alt="add" id="add-work-image">
             </div>
+            <div class="title-card">Tasks</div>
+            <div class="card-container" id="task-container">
+                </div>
+                
+
 
         </div>
         <div class="top-bar">
@@ -158,52 +159,61 @@
             </div>
         </div>
         <div class="favourites-container" id="favourites">
-            <div class="favourites">
+            <div class="favourites" id="medium" >
                 <div class="icon">
-                    <i class="fab fa-cotton-bureau"></i>
+                    <img src="./Assets/icons/medium.svg"/>
+                </div>
+                <div class="name">
+                    Medium
+                </div>
+            </div>
+            <div class="favourites" id="github">
+                <div class="icon">
+                    <img src="./Assets/icons/github.svg"/>
+                </div>
+                <div class="name">
+                    Github
+                </div>
+            </div>
+            <div class="favourites" id="spotify">
+                <div class="icon">
+                    <img src="./Assets/icons/spotify.svg"/>
+                </div>
+                <div class="name">
+                    Spotify
+                </div>
+            </div>
+            <div class="favourites" id="linkedin">
+                <div class="icon">
+                    <img src="./Assets/icons/linkedin.svg"/>
+                </div>
+                <div class="name">
+                    LinkedIn
+                </div>
+            </div>
+            <div class="favourites" id="portfolio">
+
+                <div class="icon">
+                    <img src="./Assets/icons/portfolio.svg"/>
+                </div>
+                <div class="name">
+                    Portfolio
+                </div>
+            </div>
+            <div class="favourites" id="instagram">
+                <div class="icon">
+                    <img src="./Assets/icons/instagram.svg"/>
                 </div>
                 <div class="name">
                     Instagram
                 </div>
             </div>
-            <div class="favourites">
+            <div class="favourites" id="gmail">
                 <div class="icon">
-                    <i class="fab fa-cotton-bureau"></i>
+                    <img src="./Assets/icons/gmail.svg"/>
                 </div>
                 <div class="name">
-                    Instagram
-                </div>
-            </div>
-            <div class="favourites">
-                <div class="icon">
-                    <i class="fab fa-cotton-bureau"></i>
-                </div>
-                <div class="name">
-                    Instagram
-                </div>
-            </div>
-            <div class="favourites">
-                <div class="icon">
-                    <i class="fab fa-cotton-bureau"></i>
-                </div>
-                <div class="name">
-                    Instagram
-                </div>
-            </div>
-            <div class="favourites">
-                <div class="icon">
-                    <i class="fab fa-cotton-bureau"></i>
-                </div>
-                <div class="name">
-                    Instagram
-                </div>
-            </div>
-            <div class="favourites">
-                <div class="icon">
-                    <i class="fab fa-cotton-bureau"></i>
-                </div>
-                <div class="name">
-                    Instagram
+                    Gmail
                 </div>
             </div>
         </div>
