@@ -124,6 +124,7 @@ input, select{
     gap: 40px;
     max-width: 600px;
     margin: 5% auto;
+    cursor: pointer;
 }
 .favourites{
     display: flex;
@@ -229,7 +230,7 @@ input, select{
     width: 100%;
     text-align: center;
     background-color:rgba(61, 59, 59, 0.4);
-    padding: 10px 0px;
+    padding:10px 10px;
     cursor: pointer;
     border-radius: 5px;
 }

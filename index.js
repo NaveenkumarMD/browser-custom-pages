@@ -495,7 +495,6 @@ addnewtaskbtn.addEventListener("click", async () => {
         return alert("Reward should be between the range of 1 to 100")
     }
     const tasks = await JSON.parse(localStorage.getItem("tasks"))
-    console.log("going to ass")
     if (tasks) {
         console.log("found")
         let xtotal = tasks.total
@@ -591,11 +590,12 @@ function markasdone(task_name, task_reward) {
     if (!tasks || !tasks.task || !Array.isArray(tasks.task)) {
         return
     }
-    var currtasks = tasks.task.filter(task => task.name == task_name && task.reward == task_reward)
+    var currtasks = tasks.task.filter(task => task.name != task_name && task.reward != task_reward)
     localStorage.setItem("tasks", JSON.stringify({
         total:tasks.total,
         task: currtasks
     }))
+    alert(task_name)
     gettodaytasks()
 }
 
