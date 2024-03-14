@@ -1,3 +1,6 @@
+import "./Components/Wallpaper/wallpaper";
+import "./Components/Weather/weather";
+import "./Components/Clock/clock";
 //----------------------------------------------------------------------------
 // Main variables
 //----------------------------------------------------------------------------
@@ -405,12 +408,6 @@ const getMediumData = async () => {
   console.log(medium_data);
 };
 
-//----------------------------------------------------------------
-// Notion api for To DO
-//----------------------------------------------------------------
-
-const notion_token = "";
-
 //-------------------------------------------------------------------------------------------------
 //Streak image
 //-------------------------------------------------------------------------------------------------
@@ -418,17 +415,10 @@ const get_streak_image = async () => {
   let url =
     "https://github-readme-streak-stats.herokuapp.com/?user=naveenkumarmd&theme=gruvbox_duo&date_format=M%20j%5B%2C%20Y%5D&background=312E2E80&ring=10C5FF&sideNums=DDDDDD&currStreakLabel=10C5FF&border=DDDDDD00&dates=DDDDDD&fire=0BAADD&sideLabels=DDDDDD&currStreakNum=16A6DD&stroke=C0C0C0";
   fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`)
-    .then((res) => res.blob())
+    .then((res) => res.json())
     .then((blob) => {
-      console.log(blob);
-      console.log("blob is ", URL.createObjectURL(blob));
-      localStorage.setItem(
-        "streak_image",
-        JSON.stringify({
-          url: URL.createObjectURL(blob),
-        })
-      );
-      set_streak_image(URL.createObjectURL(blob));
+      blob = blob.contents;
+      set_streak_image(blob);
     });
 };
 get_streak_image();
@@ -487,7 +477,7 @@ function addtasktoNode(task_name) {
   rewardnode.innerHTML = `
         <div class="gold-card">
             <div class="gold-card-img-container">
-                <img src="./Assets/icons/gold.png"/>
+                <img src="../Assets/icons/gold.png"/>
             </div>
         </div>
     `;
@@ -495,7 +485,7 @@ function addtasktoNode(task_name) {
 
   const donenode = document.createElement("div");
   const doneimg = document.createElement("img");
-  doneimg.src = "./Assets/icons/tick.svg";
+  doneimg.src = "../Assets/icons/tick.svg";
   doneimg.className = "note-img";
   donenode.appendChild(doneimg);
   taskcard.appendChild(donenode);
@@ -563,5 +553,5 @@ document.getElementById("spotify").addEventListener("click", () => {
   window.open("https://open.spotify.com/search", (target = "_blank"));
 });
 document.getElementById("gmail").addEventListener("click", () => {
-  window.open("https://github.com", (target = "_blank"));
+  window.open("https://gmail.com", (target = "_blank"));
 });
