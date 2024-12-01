@@ -1,6 +1,10 @@
 import "./Components/Wallpaper/wallpaper";
 import "./Components/Weather/weather";
 import "./Components/Clock/clock";
+import "./Components/Music/musicplayer";
+
+import QUOTES from "../Assets/quotes.json";
+
 //----------------------------------------------------------------------------
 // Main variables
 //----------------------------------------------------------------------------
@@ -334,35 +338,21 @@ input_field.addEventListener("focusin", () => {
 //Get a random quote and display it
 //----------------------------------------------------------------------------
 var randomQuote;
-const QuoteapiUrl = "https://type.fit/api/quotes";
-//----------------------------------------------------------------------------
-//Quotes are stored in an array in localstorage and directly accessed from there to reduce the data usage.
-//----------------------------------------------------------------------------
-const Quotes_from_local = JSON.parse(localStorage.getItem("quotes_from_local"))
-  ? QuotesfromLocal()
-  : Quotesres();
 
-function Quotesres() {
-  fetch(QuoteapiUrl)
-    .then((res) => res.json())
-    .then((res) => {
-      localStorage.setItem("quotes_from_local", JSON.stringify(res));
-      randomQuote = res[Math.floor(Math.random() * res.length)];
-      var random_Quote_node = document.getElementById("random-quote");
-      random_Quote_node.innerHTML = randomQuote.text || "";
-      var author_node = document.getElementById("author");
-      author_node.innerHTML = "- " + randomQuote.author || "";
-    });
-}
-function QuotesfromLocal() {
-  var res = JSON.parse(localStorage.getItem("quotes_from_local"));
+//----------------------------------------------------------------------------
+//Quotes are stored in local
+//----------------------------------------------------------------------------
+
+function setQuote(quotes) {
+  const res = quotes;
   randomQuote = res[Math.floor(Math.random() * res.length)];
   var random_Quote_node = document.getElementById("random-quote");
-  random_Quote_node.innerHTML = randomQuote.text || "";
+  random_Quote_node.innerHTML = randomQuote.quote || "";
   var author_node = document.getElementById("author");
   author_node.innerHTML = "- " + randomQuote.author || "";
 }
 
+setQuote(QUOTES);
 //----------------------------------------------------------------
 //Personal Data
 //----------------------------------------------------------------

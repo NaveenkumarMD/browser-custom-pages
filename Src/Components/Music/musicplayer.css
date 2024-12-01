@@ -1,7 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 
 .music-container {
   background-color: rgba(61, 59, 59, 0.4);
@@ -20,7 +17,7 @@
 }
 
 .img-container::after {
-  content: '';
+  content: "";
   background-color: #fff;
   border-radius: 50%;
   position: absolute;
@@ -46,6 +43,10 @@
 
 .music-container.play .img-container img {
   animation-play-state: running;
+}
+#music-play img {
+  width: 32px;
+  height: 32px;
 }
 
 @keyframes rotate {
@@ -117,9 +118,104 @@
 }
 
 .progress {
-  background-color:#02A5C4;
+  background-color: #02a5c4;
   border-radius: 5px;
   height: 100%;
   width: 0%;
   transition: width 0.1s linear;
+}
+
+/* Player taken from random site */
+
+#player03 {
+  position: fixed;
+  bottom: 10%;
+  left: 10px;
+  width: 300px;
+}
+
+#player03 .controls {
+  display: flex;
+  justify-content: space-around;
+}
+
+.player {
+  background-color: rgba(61, 59, 59, 0.4);
+  padding: 28px;
+  border-radius: 20px;
+}
+
+.player img {
+  width: 84px;
+  height: 84px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.info {
+  color: #e1e1e6;
+}
+
+.info p {
+  opacity: 0.68;
+  font-size: 19px;
+}
+
+.music-control {
+  cursor: pointer;
+}
+
+.info-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.player h1 {
+  font-size: 16px;
+  overflow: scroll;
+  max-height: 50px;
+  color: #e1e1e6;
+  padding-bottom: 7px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+
+.track {
+  padding-top: 28px;
+  position: relative;
+}
+
+.track::before {
+  content: "";
+  height: 6px;
+  width: 100%;
+  display: block;
+  background: #d9d9d9;
+  opacity: 0.3;
+  border-radius: 10px;
+  position: absolute;
+}
+
+.track::after {
+  content: "";
+  height: 6px;
+  width: 85%;
+  display: block;
+  background: #d9d9d9;
+  border-radius: 10px;
+}
+
+.time {
+  opacity: 0.7;
+  font-size: 14px;
+  color: gainsboro;
+
+  display: flex;
+  justify-content: space-between;
+  padding-top: 9.6px;
 }

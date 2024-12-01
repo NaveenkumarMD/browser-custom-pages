@@ -4,7 +4,7 @@
   "version": "1.0",
   "manifest_version": 3,
   "background": {
-    "service_worker": "Src/background.js"
+    "service_worker": "dist/background.js"
   },
   "action": {
     "default_popup": "Src/Popup/popup.html"
@@ -13,5 +13,6 @@
     "newtab": "Src/index.html"
   },
 
-  "permissions": ["management", "tabs", "activeTab"]
+  "permissions": ["management", "tabs", "activeTab", "scripting"],
+  "host_permissions": ["https://*/*", "http://*/*"]
 }
